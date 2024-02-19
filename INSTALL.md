@@ -185,7 +185,12 @@ In this case, `$HOME/deps/skia` is the directory where Skia was
 compiled or downloaded.  Make sure that `CMAKE_OSX_SYSROOT` is
 pointing to the correct SDK directory (in this case
 `/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk`),
-but it could be different in your Mac.
+but it could be different on your Mac. If you only have the command-line tools
+but not XCode itself installed, the SDK is likely located at `/Library/Developer/CommandLineTools/SDKs/[your MacOS version].sdk/`.
+
+Additionally, make sure to update `CMAKE_OSX_DEPLOYMENT_TARGET` to your OS version, or it will not build correctly.
+If you recieve the error `Unable to link function recv`, make sure you are pointing to a correct SDK location. 
+If you are and still get the error, use the flag `-DUSE_SHARED_CURL`.
 
 ### Apple Silicon
 
